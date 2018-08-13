@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html {if $language->href_lang}lang="{$language->href_lang|escape}"{/if} prefix="og: http://ogp.me/ns#">
+  <head>
+    {* Full base address *}
+    <base href="{$config->root_url}/">
+
+    {* Meta data *}
+    {include "head.tpl"}
+
+
+   <!--  {* JQuery *}
+    <script src="design/{$settings->theme}/js/jquery-2.1.4.min.js{if $js_version}?v={$js_version}{/if}"></script>
+
+    {* Slick slider *}
+    <script src="design/{$settings->theme}/js/slick.min.js{if $js_version}?v={$js_version}{/if}"></script>
+
+    {* Match height *}
+    <script src="design/{$settings->theme}/js/jquery.matchHeight-min.js{if $js_version}?v={$js_version}{/if}"></script> -->
+
+    {* Fonts *}
+
+
+    {* CSS *}
+    <link href="design/{$settings->theme|escape}/css/main.css{if $css_version}?v={$css_version}{/if}" rel="stylesheet">
+
+
+    {if $counters['head']}
+        {foreach $counters['head'] as $counter}
+            {$counter->code}
+        {/foreach}
+    {/if}
+
+    {if $settings->captcha_type == "v2"}
+        <script type="text/javascript">
+            var onloadCallback = function() {
+                mysitekey = "{$settings->public_recaptcha}";
+                if($('#recaptcha1').size()>0){
+                    grecaptcha.render('recaptcha1', {
+                        'sitekey' : mysitekey
+                    });
+                }
+                if($('#recaptcha2').size()>0){
+                    grecaptcha.render('recaptcha2', {
+                        'sitekey' : mysitekey
+                    });
+                }
+            };
+        </script>
+        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    {elseif $settings->captcha_type == "invisible"}
+        <script>
+            function onSubmit(token) {
+                document.getElementById("captcha_id").submit();
+            }
+            function onSubmitCallback(token) {
+                document.getElementById("fn_callback").submit();
+            }
+            function onSubmitBlog(token) {
+                document.getElementById("fn_blog_comment").submit();
+            }
+        </script>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+    {/if}
+
+</head>
+  <body class="index-page">
+    <div class="wrapper">
+      <div class="content">
+        <div class="overlay-body"></div>
+        <header class="header">
+          <div class="container">
+            <div class="content-row content-row--header">
+              <div class="logo logo--header"><a class="home-link" href="/"><img class="img-logo img-logo--header" src="/static/img/general/logo-head.png"></a></div><a class="contact-link contact-link--header" href="/">+7(843)206 04 78</a><a class="contact-link contact-link--header" href="/">г. Казань, ул. Тульская 57</a>
+              <div class="mobile-menu-icon-wrap">
+                <svg class="icon icon-menu ">
+                  <use xlink:href="static/img/svg/symbol/sprite.svg#menu"></use>
+                </svg>
+                <svg class="icon icon-close-menu ">
+                  <use xlink:href="static/img/svg/symbol/sprite.svg#close-menu"></use>
+                </svg>
+              </div>
+              <div class="button-wrap"><a class="btn btn-request-call btn-request-call--white" data-button-call="1"> Заказать звонок</a></div>
+              <a class="basket-wrap" data-button-basket="1">
+                <svg class="icon icon-basket ">
+                  <use xlink:href="static/img/svg/symbol/sprite.svg#basket"></use>
+                </svg><span class="items-amount">4</span></a>
+            </div>
+          </div>
+        </header>
+        <nav class="navigation">
+          <div class="container">
+            <div class="content-row content-row--navigation">
+              <li class="nav-list nav-list--main"><a class="nav-link nav-link--main" href="sizes.html">Выбор размера</a></li>
+              <li class="nav-list nav-list--main"><a class="nav-link nav-link--main" href="shipping.html">Доставка и оплата</a></li>
+              <li class="nav-list nav-list--main"><a class="nav-link nav-link--main" href="refund.html">Обмен и Возврат</a></li>
+              <li class="nav-list nav-list--main"><a class="nav-link nav-link--main" href="news.html">Статьи</a></li>
+              <li class="nav-list nav-list--main"><a class="nav-link nav-link--main" href="contacts.html">Контакты</a></li>
+              <li class="nav-list nav-list--main"><a class="nav-link nav-link--main" href="review.html">Отзывы</a></li>
+            </div>
+          </div>
+          <div class="button-wrap button-wrap--mobile">
+            <div class="container"><a class="btn btn-request-call btn--mobile btn--black" data-button-call="1"> Заказать звонок</a></div>
+          </div>
+        </nav>
+        <section class="sales-block">
+          <div class="container column">
+            <div class="content-row">
+              <div class="image-wrap"><img class="sales-img" src="/static/img/content/sale.png"></div>
+            </div>
+          </div>
+        </section>
+        <section class="benefits">
+          <div class="container">
+            <div class="content-row content-row--card justify-content-between">
+              <div class="benefit-card">
+                <div class="icon-wrap">
+                  <svg class="icon icon-bf-icon-1 bf-icons">
+                    <use xlink:href="static/img/svg/symbol/sprite.svg#bf-icon-1"></use>
+                  </svg>
+                </div>
+                <div class="benefit-card--content">
+                  <h3 class="benefit-card-name">Бесплатная доставка</h3>
+                  <p class="text benefit-card-text">Бесплатная доставка при полной предоплате. Доставка от 1 дня от 199 рублей.</p>
+                </div>
+              </div>
+              <div class="benefit-card">
+                <div class="icon-wrap">
+                  <svg class="icon icon-bf-icon-1 bf-icons">
+                    <use xlink:href="static/img/svg/symbol/sprite.svg#bf-icon-1"></use>
+                  </svg>
+                </div>
+                <div class="benefit-card--content">
+                  <h3 class="benefit-card-name">Летняя Ликвидация</h3>
+                  <p class="text benefit-card-text">Скидки на коллекцию 2017-2018 до 70% Торопитесь!</p>
+                </div>
+              </div>
+              <div class="benefit-card">
+                <div class="icon-wrap">
+                  <svg class="icon icon-bf-icon-1 bf-icons">
+                    <use xlink:href="static/img/svg/symbol/sprite.svg#bf-icon-1"></use>
+                  </svg>
+                </div>
+                <div class="benefit-card--content">
+                  <h3 class="benefit-card-name">Гарантия качества</h3>
+                  <p class="text benefit-card-text">Мы работаем с официальным поставщиком UGG Australia и гарантируем ее качество.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="shop-content">
+          <div class="container">
+            <div class="content-row content-row--item justify-content-end">
+              <div class="catalog">
+                <div class="drop-menu-head">
+                  <div class="drop-menu-head-name drop-menu-head-name--catalog"><a class="drop-menu-head-heading" href="catalog.html">Каталог</a>
+                    <svg class="icon icon-chevron-down drop-menu-head-icon">
+                      <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-down"></use>
+                    </svg>
+                  </div>
+                  <div class="drop-menu-body">
+                    <div class="drop-menu-body-name">
+                      <svg class="icon icon-women-ugg drop-menu-body-icon">
+                        <use xlink:href="static/img/svg/symbol/sprite.svg#women-ugg"></use>
+                      </svg>
+                      <h3 class="drop-menu-body-heading">Женские UGG</h3>
+                    </div>
+                    <div class="drop-menu-body-content">
+                      <div class="drop-link-row"><a class="drop-link" href="/">Классические короткие</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Непромокаемые угги</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Классические ультракороткие</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Классические с пуговицей</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Ультракороткие с пуговицей</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Высокие с тремяпуговицами</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Высокие с тремяпуговицами</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">С мехом лисы</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">С бантиками</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Угги на молнии</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">С кристаллом</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Короткие с пайетками</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Короткие со стразами</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">С ремешками и замком</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Вязаные угги</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Угги от дизайнера Jimmy Choo</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Женские мокасины</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Эксклюзивные угги и новинки 2017-2018</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Женские тапочки</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="drop-menu-body">
+                    <div class="drop-menu-body-name">
+                      <svg class="icon icon-men-ugg drop-menu-body-icon">
+                        <use xlink:href="static/img/svg/symbol/sprite.svg#men-ugg"></use>
+                      </svg>
+                      <h3 class="drop-menu-body-heading">Мужские UGG</h3>
+                    </div>
+                    <div class="drop-menu-body-content">
+                      <div class="drop-link-row"><a class="drop-link" href="/">Короткие мужские</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Ультракороткие мужские</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Neumel</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Backham</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Hannen</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Capulin</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Sulivan</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Мужские мокасины</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Мужские тапочки</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="drop-menu-body">
+                    <div class="drop-menu-body-name">
+                      <svg class="icon icon-child-ugg drop-menu-body-icon">
+                        <use xlink:href="static/img/svg/symbol/sprite.svg#child-ugg"></use>
+                      </svg>
+                      <h3 class="drop-menu-body-heading">Детские UGG</h3>
+                    </div>
+                    <div class="drop-menu-body-content">
+                      <div class="drop-link-row"><a class="drop-link" href="/">Детские короткие</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Детские короткие</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Детские с пуговицей</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Пинетки</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="drop-menu-body">
+                    <div class="drop-menu-body-name">
+                      <svg class="icon icon-acc-ugg drop-menu-body-icon">
+                        <use xlink:href="static/img/svg/symbol/sprite.svg#acc-ugg"></use>
+                      </svg>
+                      <h3 class="drop-menu-body-heading">Аксессуары</h3>
+                    </div>
+                    <div class="drop-menu-body-content">
+                      <div class="drop-link-row"><a class="drop-link" href="/">Средства по уходу</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Меховые наушники</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Стельки</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                      <div class="drop-link-row"><a class="drop-link" href="/">Сумки UGG Australia</a>
+                        <svg class="icon icon-chevron-right drop-link-icon">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item-content">
+                <div class="drop-menu-head drop-filter">
+                  <div class="drop-menu-head-name">
+                    <h3 class="drop-menu-head-heading">Подобрать товар</h3>
+                    <svg class="icon icon-chevron-down drop-menu-head-icon">
+                      <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-down"></use>
+                    </svg>
+                  </div>
+                  <div class="filter-items">
+                    <div class="filter-content">
+                      <div class="filter-item-row filter-item-row--half">
+                        <div class="filter-item-name-row">
+                          <h3 class="filter-item-name">Для кого</h3>
+                          <div class="icon-wrap">
+                            <svg class="icon icon-chevron-down mobile-chevron">
+                              <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-down"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="filter-check-row">
+                          <div class="filter-select-row filter-select-row--half-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Женские</span>
+                          </div>
+                          <div class="filter-select-row filter-select-row--half-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Мужские</span>
+                          </div>
+                          <div class="filter-select-row filter-select-row--half-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Детские</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="filter-item-row filter-item-row--half">
+                        <div class="filter-item-name-row">
+                          <h3 class="filter-item-name">Детские</h3>
+                          <div class="icon-wrap">
+                            <svg class="icon icon-chevron-down mobile-chevron">
+                              <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-down"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="filter-check-row">
+                          <div class="filter-select-row filter-select-row--half-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Высокие</span>
+                          </div>
+                          <div class="filter-select-row filter-select-row--half-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox" checked="checked"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Мини</span>
+                          </div>
+                          <div class="filter-select-row filter-select-row--half-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Средние</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="filter-item-row">
+                        <div class="filter-item-name-row">
+                          <h3 class="filter-item-name">Цвет</h3>
+                          <div class="icon-wrap">
+                            <svg class="icon icon-chevron-down mobile-chevron">
+                              <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-down"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="filter-items-wrap">
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Черный</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Каштан</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Песок</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Синий</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Серый</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Шоколад</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Золото</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Белый</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Другие цвета</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="filter-item-row">
+                        <div class="filter-item-name-row">
+                          <h3 class="filter-item-name">Материал</h3>
+                          <div class="icon-wrap">
+                            <svg class="icon icon-chevron-down mobile-chevron">
+                              <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-down"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="filter-items-wrap">
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Кожа</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Пайетки</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Блестящие замшевые</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Металлик(Обливные)</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Бомбер(плотная кожа)</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Замшевые</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Золото</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Белый</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">40 / 9 US</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="filter-item-row">
+                        <div class="filter-item-name-row">
+                          <h3 class="filter-item-name">Фасон</h3>
+                          <div class="icon-wrap">
+                            <svg class="icon icon-chevron-down mobile-chevron">
+                              <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-down"></use>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="filter-items-wrap">
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Классика</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">С бантиками</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">С ремнями</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">С пуговицей</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">С меховым манжетом</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">С заклепками и стразами</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">С кристаллом</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">С замком</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">С пайетками</span>
+                          </div>
+                          <div class="filter-select-row">
+                            <label class="filter-mark">
+                              <input class="filter-control-input" type="checkbox"><span class="filter-control-indicator">
+                                <svg class="icon icon-checked ">
+                                  <use xlink:href="static/img/svg/symbol/sprite.svg#checked"></use>
+                                </svg></span>
+                            </label><span class="filter-control-name">Вязаные</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="filter-item-row filter-action-row">
+                        <div class="slider-row">
+                          <div class="filter-item-name-row">
+                            <h3 class="filter-item-name">Цена</h3>
+                            <div class="icon-wrap">
+                              <svg class="icon icon-chevron-down mobile-chevron">
+                                <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-down"></use>
+                              </svg>
+                            </div>
+                          </div>
+                          <div class="slider-range-row">
+                            <div class="slider-range" id="slider-range"></div>
+                            <label class="amount-f" for="amount"></label>
+                            <label class="amount-s" for="amount"></label>
+                            <div class="amount-row"><span class="price-range-name">от </span>
+                              <input class="amount" id="amount-f"><span class="price-range-name">до</span>
+                              <input class="amount" id="amount-s">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="button-wrap button-wrap--filter">
+                          <button class="btn btn--black btn-make-choice">Подобрать товар</button>
+                          <button class="btn btn--white btn-reset">Сбросить всe</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="item-card-row">
+                  <div class="item-card">
+                    <div class="item-card-image"><img class="item-img" src="/static/img/content/i-1.png"></div>
+                    <div class="item-card-name"><a class="item-name" href="product.html">Jimmy Choo Multicrystal chocolate</a></div>
+                    <div class="item-card-type">
+                      <h3 class="item-card-type-name">Женские UGG</h3>
+                    </div>
+                    <div class="item-card-price-row">
+                      <div class="dicount-price-row"><span class="old-price">17 100 руб.  </span><span class="discount-amount"> Скидка 54%</span></div><span class="actual-price">7 190 руб.</span>
+                    </div>
+                    <div class="button-row"><a class="btn btn--white btn-order">Заказать</a></div>
+                  </div>
+                  <div class="item-card">
+                    <div class="item-card-image"><img class="item-img" src="/static/img/content/i-1.png"></div>
+                    <div class="item-card-name"><a class="item-name" href="/">Jimmy Choo Multicrystal chocolate</a></div>
+                    <div class="item-card-type">
+                      <h3 class="item-card-type-name">Женские UGG</h3>
+                    </div>
+                    <div class="item-card-price-row">
+                      <div class="dicount-price-row"><span class="old-price">17 100 руб.  </span><span class="discount-amount"> Скидка 54%</span></div><span class="actual-price">7 190 руб.</span>
+                    </div>
+                    <div class="button-row"><a class="btn btn--white btn-order">Заказать</a></div>
+                  </div>
+                  <div class="item-card">
+                    <div class="item-card-image"><img class="item-img" src="/static/img/content/i-1.png"></div>
+                    <div class="item-card-name"><a class="item-name" href="/">Jimmy Choo Multicrystal chocolate</a></div>
+                    <div class="item-card-type">
+                      <h3 class="item-card-type-name">Женские UGG</h3>
+                    </div>
+                    <div class="item-card-price-row">
+                      <div class="dicount-price-row"><span class="old-price">17 100 руб.  </span><span class="discount-amount"> Скидка 54%</span></div><span class="actual-price">7 190 руб.</span>
+                    </div>
+                    <div class="button-row"><a class="btn btn--white btn-order">Заказать</a></div>
+                  </div>
+                  <div class="item-card">
+                    <div class="item-card-image"><img class="item-img" src="/static/img/content/i-1.png"></div>
+                    <div class="item-card-name"><a class="item-name" href="product.html">Jimmy Choo Multicrystal chocolate</a></div>
+                    <div class="item-card-type">
+                      <h3 class="item-card-type-name">Женские UGG</h3>
+                    </div>
+                    <div class="item-card-price-row">
+                      <div class="dicount-price-row"><span class="old-price">17 100 руб.  </span><span class="discount-amount"> Скидка 54%</span></div><span class="actual-price">7 190 руб.</span>
+                    </div>
+                    <div class="button-row"><a class="btn btn--white btn-order">Заказать</a></div>
+                  </div>
+                  <div class="item-card">
+                    <div class="item-card-image"><img class="item-img" src="/static/img/content/i-1.png"></div>
+                    <div class="item-card-name"><a class="item-name" href="/">Jimmy Choo Multicrystal chocolate</a></div>
+                    <div class="item-card-type">
+                      <h3 class="item-card-type-name">Женские UGG</h3>
+                    </div>
+                    <div class="item-card-price-row">
+                      <div class="dicount-price-row"><span class="old-price">17 100 руб.  </span><span class="discount-amount"> Скидка 54%</span></div><span class="actual-price">7 190 руб.</span>
+                    </div>
+                    <div class="button-row"><a class="btn btn--white btn-order">Заказать</a></div>
+                  </div>
+                  <div class="item-card">
+                    <div class="item-card-image"><img class="item-img" src="/static/img/content/i-1.png"></div>
+                    <div class="item-card-name"><a class="item-name" href="/">CLASSIC SHORT II GREY</a></div>
+                    <div class="item-card-type">
+                      <h3 class="item-card-type-name">Женские UGG</h3>
+                    </div>
+                    <div class="item-card-price-row">
+                      <div class="dicount-price-row"><span class="old-price">17 100 руб.  </span><span class="discount-amount"> Скидка 54%</span></div><span class="actual-price">7 190 руб.</span>
+                    </div>
+                    <div class="button-row"><a class="btn btn--white btn-order">Заказать</a></div>
+                  </div>
+                  <div class="item-card">
+                    <div class="item-card-image"><img class="item-img" src="/static/img/content/i-1.png"></div>
+                    <div class="item-card-name"><a class="item-name" href="/">Jimmy Choo Multicrystal chocolate</a></div>
+                    <div class="item-card-type">
+                      <h3 class="item-card-type-name">Женские UGG</h3>
+                    </div>
+                    <div class="item-card-price-row">
+                      <div class="dicount-price-row"><span class="old-price">17 100 руб.  </span><span class="discount-amount"> Скидка 54%</span></div><span class="actual-price">7 190 руб.</span>
+                    </div>
+                    <div class="button-row"><a class="btn btn--white btn-order">Заказать</a></div>
+                  </div>
+                  <div class="item-card">
+                    <div class="item-card-image"><img class="item-img" src="/static/img/content/i-1.png"></div>
+                    <div class="item-card-name"><a class="item-name" href="/">Jimmy Choo Multicrystal chocolate</a></div>
+                    <div class="item-card-type">
+                      <h3 class="item-card-type-name">Женские UGG</h3>
+                    </div>
+                    <div class="item-card-price-row">
+                      <div class="dicount-price-row"><span class="old-price">17 100 руб.  </span><span class="discount-amount"> Скидка 54%</span></div><span class="actual-price">7 190 руб.</span>
+                    </div>
+                    <div class="button-row"><a class="btn btn--white btn-order">Заказать</a></div>
+                  </div>
+                  <div class="item-card">
+                    <div class="item-card-image"><img class="item-img" src="/static/img/content/i-1.png"></div>
+                    <div class="item-card-name"><a class="item-name" href="/">Jimmy Choo Multicrystal chocolate</a></div>
+                    <div class="item-card-type">
+                      <h3 class="item-card-type-name">Женские UGG</h3>
+                    </div>
+                    <div class="item-card-price-row">
+                      <div class="dicount-price-row"><span class="old-price">17 100 руб.  </span><span class="discount-amount"> Скидка 54%</span></div><span class="actual-price">7 190 руб.</span>
+                    </div>
+                    <div class="button-row"><a class="btn btn--white btn-order">Заказать</a></div>
+                  </div>
+                </div>
+                <div class="pagination-wrap-row">
+                  <div class="pagination-row pagination-row--main">
+                    <svg class="icon icon-chevron-left ">
+                      <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-left"></use>
+                    </svg>
+                    <div class="pag-round pag-round--active"><span class="pag-number">1</span></div>
+                    <div class="pag-round"><span class="pag-number">2</span></div>
+                    <div class="pag-round"><span class="pag-number">3</span></div>
+                    <div class="pag-round"><span class="pag-number">4</span></div>
+                    <div class="pag-round"><span class="pag-number">5</span></div>
+                    <div class="pag-round"><span class="pag-number">6	</span></div>
+                    <svg class="icon icon-chevron-right ">
+                      <use xlink:href="static/img/svg/symbol/sprite.svg#chevron-right"></use>
+                    </svg>
+                  </div>
+                </div>
+                <div class="reviews-block">
+                  <div class="heading-row">
+                    <h3 class="block-heading">Отзывы</h3>
+                  </div>
+                  <div class="content-row justify-content-between">
+                    <div class="review">
+                      <div class="qoutes">
+                        <svg class="icon icon-quotes ">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#quotes"></use>
+                        </svg>
+                      </div>
+                      <div class="review-user-info">
+                        <div class="review-user-image-row"><img class="review-user-image" src="/static/img/content/user-icon-1.png"></div>
+                        <div class="review-user-content-row"><span class="review-user-name">Ларина Света</span><span class="review-post-date">11.06.2018</span><span class="review-user-location">Казань</span></div>
+                      </div>
+                      <div class="review-user-text-row">
+                        <p class="review-user-text">Угги супер))) огромное спасибо вам за качественную продукцию и хорошее обслуживание) и за хорошие советы, не знала какой точно размер, но вы мне помогли и всё подошло, прям как надо))) спасибо!</p>
+                      </div>
+                    </div>
+                    <div class="review">
+                      <div class="qoutes">
+                        <svg class="icon icon-quotes ">
+                          <use xlink:href="static/img/svg/symbol/sprite.svg#quotes"></use>
+                        </svg>
+                      </div>
+                      <div class="review-user-info">
+                        <div class="review-user-image-row"><img class="review-user-image" src="/static/img/content/user-icon-1.png"></div>
+                        <div class="review-user-content-row"><span class="review-user-name">Ларина Света</span><span class="review-post-date">11.06.2018</span><span class="review-user-location">Казань</span></div>
+                      </div>
+                      <div class="review-user-text-row">
+                        <p class="review-user-text">Угги супер))) огромное спасибо вам за качественную продукцию и хорошее обслуживание) и за хорошие советы, не знала какой точно размер, но вы мне помогли и всё подошло, прям как надо))) спасибо!</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="button-wrap button-wrap--review align-items-center justify-content-center"><a class="btn btn-review--black">Оставить отзыв</a><a class="btn btn-review--white">Все Отзывы</a></div>
+                </div>
+                <div class="info-block">
+                  <div class="heading-row">
+                    <h3 class="block-heading">Угги в Казани</h3>
+                  </div>
+                  <div class="content-row justify-content-between">
+                    <div class="ugg-info">
+                      <div class="info-title-row">
+                        <h4 class="info-title">Интернет-магазин Ugg-kzn.ru</h4>
+                      </div>
+                      <div class="info-text-row">
+                        <p class="info-text">Интернет-магазин Ugg-kzn.ru предлагает выгодно купить угги в Казани. Оригинальная обувь Ugg Australia для женщин, мужчин и детей представлена у нас в широком ассортименте по доступным ценам.</p>
+                        <p class="info-text">Классические высокие угги в виде сапожек, модные ботинки, комфортные мокасины из качественной кожи и замши — выбор действительно огромен.Вас порадуют наши акции, специальные предложения и скидки на угги из натуральной овчины.</p>
+                      </div>
+                    </div>
+                    <div class="ugg-info ugg-info--hoverable">
+                      <div class="info-title-row">
+                        <h4 class="info-title">Оригинальные угги в Казани</h4>
+                      </div>
+                      <div class="info-text-row">
+                        <p class="info-text">Мы рады представить комфортную и долговечную обувь «Ugg Australia» нашим покупателям в Казани. Специально для Вас мы выставляем в нашем интернет-магазине только самые популярные и востребованные модели угг.</p>
+                        <p class="info-text">В интернет-магазине Ugg-kzn.ru можно приобрести не только сапоги угги из овчины, но и различные аксессуары и средства по уходу за обувью. С любыми вопросами обращайтесь к нашим консультантам!</p>
+                      </div>
+                    </div>
+                    <div class="action-link-row--main"><span class="action-link action-link--active">Свернуть ></span><span class="action-link">Читать далее ></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="popup" data-call="1">
+          <div class="container">
+            <div class="popup-content">
+              <div class="close-icon-row">
+                <svg class="icon icon-close ">
+                  <use xlink:href="static/img/svg/symbol/sprite.svg#close"></use>
+                </svg>
+              </div>
+              <div class="popup-content-heading-row">
+                <h3 class="popup-content-heading">Заказать звонок</h3>
+              </div>
+              <form class="popup-form">
+                <div class="popup-form-description"><span class="popup-form-description-text">Заполните, пожалуйста, поля ниже, чтобы мы могли связаться с вами	</span></div>
+                <div class="input-row">
+                  <input class="input--popup-form" placeholder="Имя" required>
+                </div>
+                <div class="input-row">
+                  <input class="input--popup-form input--phone" placeholder="Телефон" required>
+                  <input class="input--popup-form input--email" placeholder="E-mail">
+                </div>
+                <div class="input-row">
+                  <textarea class="comment-area" placeholder="Коментарий"></textarea>
+                </div>
+                <div class="button-wrap">
+                  <button class="btn btn-large btn--black btn-call-me">Позвоните мне</button><a class="btn btn-small btn--white btn-decline">Отменить</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="popup">
+          <div class="container">
+            <div class="popup-content">
+              <div class="close-icon-row close-icon-row--thanks">
+                <svg class="icon icon-close ">
+                  <use xlink:href="static/img/svg/symbol/sprite.svg#close"></use>
+                </svg>
+              </div>
+              <div class="popup-content-heading-row">
+                <h3 class="popup-content-heading">Заказать звонок</h3>
+              </div>
+              <form class="popup-form">
+                <div class="popup-form-description"><span class="popup-form-description-text">Ваше сообщение отправлено!</span></div>
+                <div class="popup-form-description"><span class="popup-form-description-message">Наши менеджеры рассмотрят его в рабочие часы и свяжутся с вами.	</span></div>
+                <div class="button-wrap">
+                  <button class="btn btn--white">Спасибо</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="popup popup-order">
+          <div class="container">
+            <div class="popup-content">
+              <div class="close-icon-row">
+                <svg class="icon icon-close ">
+                  <use xlink:href="static/img/svg/symbol/sprite.svg#close"></use>
+                </svg>
+              </div>
+              <div class="popup-content-heading-row">
+                <h3 class="popup-content-heading popup-content-heading--contacts">Оформление заказа</h3>
+              </div>
+              <form class="popup-form">
+                <div class="popup-form-description"><span class="popup-form-description-text">Заполните, пожалуйста, поля ниже, чтобы мы могли связаться с вами	</span></div>
+                <div class="input-row">
+                  <input class="input--popup-form" placeholder="ФИО" required>
+                </div>
+                <div class="input-row">
+                  <input class="input--popup-form input--phone" placeholder="Телефон" required>
+                  <input class="input--popup-form input--email" placeholder="E-mail">
+                </div>
+                <div class="input-row">
+                  <textarea class="textarea delivery-area" placeholder="Адрес доставки"></textarea>
+                </div>
+                <div class="input-row">
+                  <textarea class="textarea comment-area" placeholder="Коментарий"></textarea>
+                </div>
+                <div class="button-wrap">
+                  <button class="btn btn-large btn--black btn-call-me">Отправить сообщение</button><a class="btn btn-small btn--white btn-decline">Отменить</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="popup" data-basket="1">
+          <div class="container">
+            <div class="popup-content">
+              <div class="close-icon-row">
+                <svg class="icon icon-close ">
+                  <use xlink:href="static/img/svg/symbol/sprite.svg#close"></use>
+                </svg>
+              </div>
+              <div class="popup-content-heading-row">
+                <h3 class="popup-content-heading">Корзина</h3>
+              </div>
+              <form class="popup-form popup-form--basket">
+                <div class="popup-form-info--basket">
+                  <div class="popup-form-name-row--basket popup-form-row--basket">
+                    <span class="popup-form-name">Наименование</span></div>
+                  <div class="popup-form-total-row--basket popup-form-row--basket">
+                    <span class="popup-form-total">Кол-во</span></div>
+                  <div class="popup-form-price-row--basket popup-form-row--basket">
+                    <span class="popup-form-price">Стоимость</span></div>
+                </div>
+                <div class="popup-form-items-content--basket">
+                  <div class="popup-form-items-row">
+                    <div class="popup-items-name-row"> <span class="popup-items-name">Jimmy Choo Multicrystal Chocolate / 36</span></div>
+                    <div class="popup-items-total">
+                      <svg class="icon icon-minus math-icon">
+                        <use xlink:href="static/img/svg/symbol/sprite.svg#minus"></use>
+                      </svg>
+                      <input class="item-amount">
+                      <svg class="icon icon-plus math-icon">
+                        <use xlink:href="static/img/svg/symbol/sprite.svg#plus"></use>
+                      </svg>
+                    </div>
+                    <div class="popup-items-price-row"><span class="popup-items-price">7790 руб.</span></div>
+                  </div>
+                  <div class="popup-form-items-row">
+                    <div class="popup-items-name-row"> <span class="popup-items-name">Jimmy Choo Multicrystal Chocolate / 36</span></div>
+                    <div class="popup-items-total">
+                      <svg class="icon icon-minus math-icon">
+                        <use xlink:href="static/img/svg/symbol/sprite.svg#minus"></use>
+                      </svg>
+                      <input class="item-amount">
+                      <svg class="icon icon-plus math-icon">
+                        <use xlink:href="static/img/svg/symbol/sprite.svg#plus"></use>
+                      </svg>
+                    </div>
+                    <div class="popup-items-price-row"><span class="popup-items-price">7790 руб.</span></div>
+                  </div>
+                  <div class="popup-form-items-row">
+                    <div class="popup-items-name-row"> <span class="popup-items-name">Jimmy Choo Multicrystal Chocolate / 36</span></div>
+                    <div class="popup-items-total">
+                      <svg class="icon icon-minus math-icon">
+                        <use xlink:href="static/img/svg/symbol/sprite.svg#minus"></use>
+                      </svg>
+                      <input class="item-amount">
+                      <svg class="icon icon-plus math-icon">
+                        <use xlink:href="static/img/svg/symbol/sprite.svg#plus"></use>
+                      </svg>
+                    </div>
+                    <div class="popup-items-price-row"><span class="popup-items-price">7790 руб.	</span></div>
+                  </div>
+                  <div class="popup-form-row popup-form-row--basket-info">
+                    <div class="basket-info"><span class="text-count">Количество товаров</span><span class="total-items-in-basket">3</span></div>
+                    <div class="basket-info"><span class="text-sum">итого:</span><span class="total-price-in-basket">22 750 руб.</span></div>
+                  </div>
+                </div>
+                <div class="button-wrap button-wrap--basket">
+                  <button class="btn btn--black btn-call-me">Оформить заказ</button>
+                  <button class="btn btn-large btn--white">Продолжить покупки</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <footer class="footer">
+          <div class="container">
+            <div class="content-row content-row--footer align-items-center justify-content-between">
+              <div class="logo"><a class="home-link" href="/"><img src="/static/img/general/logo-footer.png"></a></div><a class="contact-link contact-link--footer" href="/">+7(843)206 04 78</a><a class="contact-link contact-link--footer" href="/">г. Казань, ул. Тульская 57  </a><a class="contact-link contact-link--footer" href="/">info@ugg-kzn.ru   </a>
+              <div class="button-wrap"><a class="btn btn-request-call btn-request-call--black btn-footer" data-button-call="1">Заказать звонок</a><a class="btn btn-request-call btn--mobile btn--white" data-button-call="1"> Заказать звонок</a></div>
+            </div>
+          </div>
+        </footer>
+        <div class="copyright"><a class="copyright-link" href="/">2009-2018 © «ugg-kzn.ru»</a></div>
+      </div>
+    </div>
+    <script src="static/js/wow.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsuD16oUFkzJz1ICnTajPp12gzch19Tm8&amp;callback=initMap"></script>
+   <!--  <script src="static/js/jquery.js"></script> -->
+  <!--   <script src="static/js/jquery-ui.js"></script> -->
+    <!-- <script src="static/js/slick.js"></script> -->
+   <!--  <script src="static/js/libs.min.js"></script> -->
+   <!--  <script src="static/js/main.js"></script> -->
+    {*template scripts*}
+{* JQuery UI *}
+{* Библиотека с "Slider", "Transfer Effect" *}
+<script src="design/{$settings->theme}/js/jquery.js{if $js_version}?v={$js_version}{/if}"></script>
+
+{* Fancybox *}
+<!-- <link href="design/{$settings->theme|escape}/css/jquery.fancybox.min.css{if $css_version}?v={$css_version}{/if}" rel="stylesheet"> -->
+<script src="design/{$settings->theme|escape}/js/jquery.fancybox.min.js{if $js_version}?v={$js_version}{/if}" defer></script>
+
+<script src="design/{$settings->theme|escape}/js/jquery-ui.js{if $js_version}?v={$js_version}{/if}" defer></script>
+<script src="design/{$settings->theme|escape}/js/libs.min.js{if $js_version}?v={$js_version}{/if}" defer></script>
+
+{* Autocomplete *}
+<script src="design/{$settings->theme}/js/main.js{if $js_version}?v={$js_version}{/if}" defer></script>
+
+{* Admin tooltips *}
+{if $smarty.session.admin}
+    <script>lang_id = {$language->id}</script>
+    <script src ="backend/design/js/admintooltip/admintooltip.js{if $js_version}?v={$js_version}{/if}"></script>
+    <link href="backend/design/js/admintooltip/styles/admin.css{if $css_version}?v={$css_version}{/if}" rel="stylesheet">
+{/if}
+
+{*JQuery Validation*}
+<script src="design/{$settings->theme}/js/jquery.validate.min.js{if $js_version}?v={$js_version}{/if}" ></script>
+<script src="design/{$settings->theme}/js/additional-methods.min.js{if $js_version}?v={$js_version}{/if}"></script>
+
+{* Social share buttons *}
+{if $smarty.get.module == 'ProductView' || $smarty.get.module == "BlogView"}
+
+    <link href="design/{$settings->theme|escape}/css/jssocials.css{if $css_version}?v={$css_version}{/if}" rel="stylesheet">
+    <link href="design/{$settings->theme|escape}/css/jssocials-theme-flat.css{if $css_version}?v={$css_version}{/if}" rel="stylesheet">
+    <script src="design/{$settings->theme|escape}/js/jssocials.min.js{if $js_version}?v={$js_version}{/if}" ></script>
+{/if}
+
+{* Okay *}
+{include file="scripts.tpl"}
+<script src="design/{$settings->theme}/js/okay.js{if $js_version}?v={$js_version}{/if}"></script>
+{*template scripts*}
+
+{if $counters['body_bottom']}
+    {foreach $counters['body_bottom'] as $counter}
+        {$counter->code}
+    {/foreach}
+{/if}
+  </body>
+</html>
